@@ -1,7 +1,7 @@
 <% can_new = User.current.allowed_to?(:new_newissuealerts, @project) 
 can_edit = User.current.allowed_to?(:edit_newissuealerts, @project)
 %>
-<h2><%= l(:newissuealerts_index, :project => @project.name) %></h2>
+<h2><%= t(:newissuealerts_index, :project => @project.name).html_safe %></h2>
 <% if can_new %>
 <p>
 <%= link_to(l(:newissuealerts_text), {:controller => 'newissuealerts', :action => 'new', :project_id => @project.identifier}, :class => 'icon icon-add' ) %> 

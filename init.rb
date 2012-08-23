@@ -1,8 +1,7 @@
 require 'redmine'
 
 # Patches to the Redmine core.
-require 'dispatcher'
-Dispatcher.to_prepare :redmine_newissuealerts do
+RedmineApp::Application.config.after_initialize do
   require_dependency 'issue'
   # Guards against including the module multiple time (like in tests)
   # and registering multiple callbacks
@@ -14,6 +13,9 @@ Dispatcher.to_prepare :redmine_newissuealerts do
   unless ProjectsHelper.included_modules.include? RedmineNewissuealerts::ProjectsHelperPatch
     ProjectsHelper.send(:include, RedmineNewissuealerts::ProjectsHelperPatch)
   end
+  
+  #Action mailer does not have the plugin directory, this may be removed later if redmine patches the plugin.rb file http://www.redmine.org/issues/11530
+  ActionMailer::Base.prepend_view_path(File.join(File.dirname(__FILE__), 'app', 'views'))
 end
 
 # It requires the file in lib/redmine_newissuealerts/hooks.rb
