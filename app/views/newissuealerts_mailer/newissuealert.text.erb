@@ -1,3 +1,6 @@
+<% if @newissuealert.template? %>
+<%= render :inline => @newissuealert.template, :locals => { :issue => @issue, :issue_url => @issue_url } %>
+<% else %>
 <%= 
 l(:text_issue_added, :id => "##{@issue.id}", :author => @issue.author)
 %>
@@ -8,3 +11,4 @@ l(:text_issue_added, :id => "##{@issue.id}", :author => @issue.author)
 ----------------------------------------
 <%= l(:newissuealerts_footer) %>
 
+<% end %>

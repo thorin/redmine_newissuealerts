@@ -2,6 +2,9 @@ require "mailer"
 
 class NewissuealertsMailer < Mailer
   def newissuealert( email, issue, newissuealert)
+    @issue = issue
+    @issue_url = url_for(:controller => 'issues', :action => 'show', :id => issue)
+    @newissuealert = newissuealert
     project = issue.project
     tracker = issue.tracker
     author = issue.author
@@ -13,9 +16,10 @@ class NewissuealertsMailer < Mailer
     headers 'X-Priority' => 1, 'Importance' => 'High', 'X-MSMail-Priority' => 'High' if newissuealert.priority
     message_id issue
     subject = "[#{issue.project.name} - #{issue.tracker.name} ##{issue.id}] (#{issue.status.name}) #{issue.subject}"
-    @issue = issue;
-    @issue_url = url_for(:controller => 'issues', :action => 'show', :id => issue)
-    mail(:to => email, 
+    if newissuealert.subject?
+      subject = render :inline => newissuealert.subject, :locals => { :issue => @issue, :issue_url => @issue_url }
+    end
+    mail(:to => email,
       :subject => subject)
   end
 end

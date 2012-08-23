@@ -11,6 +11,8 @@ en:
   delete: Delete
   enabled: Enabled
   newissuealerts_set_priority: Priority
+  newissuealerts_subject: Subject
+  newissuealerts_template: Template
   # new view
   newissuealerts_new: Creating a New Issue Alert for <em>%{project}</em>
   create: Create
