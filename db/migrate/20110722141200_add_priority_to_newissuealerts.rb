@@ -1,6 +1,6 @@
 class AddPriorityToNewissuealerts < ActiveRecord::Migration
   def self.up
-    add_column :newissuealerts, :priority, :boolean, :default => 0
+    add_column :newissuealerts, :priority, :boolean, :default => false
   end
 
   def self.down

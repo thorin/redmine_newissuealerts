@@ -1,6 +1,6 @@
 class AlterNewissuealertsSetDefaults < ActiveRecord::Migration
   def self.up
-    change_column_default(:newissuealerts, :enabled, 0)
+    change_column_default(:newissuealerts, :enabled, false)
   end
 
   def self.down
