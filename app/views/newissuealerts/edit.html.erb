@@ -16,6 +16,9 @@
     <%= f.label l(:newissuealerts_set_priority) %> <%= f.check_box :priority %>
   </p>
   <p>
+    <%= f.label l(:field_tracker) %> <%= f.select :tracker_id, ["All"].collect{|t| [t, -1]} | @project.trackers.collect {|t| [t.name, t.id]}, :required => false %>
+  </p>
+  <p>
     <%= f.label l(:newissuealerts_subject) %> <%= f.text_field :subject, :size => 255 %>
   </p>
   <p>
