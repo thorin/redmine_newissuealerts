@@ -1,0 +1,30 @@
+es:
+  #menu entry
+  newissuealert_menuitem: Alertas
+  #edit view
+  newissuealerts_edit: Editar Alertas para <em>%{project}</em>
+  email_addresses: Correos
+  email_addresses_comma_separated: Correos separados por comas
+  newissuealerts_deletion_confirm: Are you sure you want to delete this item?
+  save: Guardar
+  delete: Borrar
+  enabled: Habilitado
+  newissuealerts_set_priority: Prioridad
+  newissuealerts_subject: Asunto
+  newissuealerts_template: Plantilla
+  # new view
+  newissuealerts_new: Crear nueva Alerta para <em>%{project}</em>
+  create: Create
+  # index view
+  newissuealerts_index: Listados de Alertas para <em>%{project}</em>
+  edit_delete: Editar/Borrar
+  newissuealerts_text: Crear nueva Alerta
+  # controller
+  newissuealerts_creation_success: Alerta creada
+  newissuealerts_creation_failed: La Alerta no se pudo crear
+  newissuealerts_deletion_success: Alerta borrada
+  newissuealerts_deletion_failed: La Alerta no se ha podido borrar
+  newissuealerts_save_success: Alerta guardada
+  newissuealerts_save_failed: La Alerta no se ha podido guardar
+  # mailer
+  newissuealerts_footer: Ha recebido esta notificación porque su correo ha sido añadido al plugin de Alertas

@@ -42,10 +42,10 @@ module RedmineNewissuealerts
       else
         author = 'Anonymous'
       end
-    
+
       newissuealerts = Newissuealert.find(:all, :conditions => { :project_id => project.id } )
       newissuealerts.each do |n|
-        if n.enabled and (n.project_id == -1 or n.tracker_id == tracker_id)
+        if n.enabled and (n.tracker_id == -1 or n.tracker_id == tracker_id)
           n.mail_addresses.split(",").each do |e|
             NewissuealertsMailer.newissuealert(e, self, n).deliver
           end
