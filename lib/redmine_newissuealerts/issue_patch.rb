@@ -5,18 +5,18 @@ module RedmineNewissuealerts
     def self.included(base) # :nodoc:
       base.extend(ClassMethods)
       base.send(:include, InstanceMethods)
-      # Same as typing in the class 
-      base.class_eval do 
+      # Same as typing in the class
+      base.class_eval do
         unloadable # Send unloadable so it will not be unloaded in development
 
         after_create :newissue_created
-      
+
         # Add visible to Redmine
         unless respond_to?(:visible)
           named_scope :visible, lambda {|*args| { :include => :project,
                                                   :conditions => Project.allowed_to_condition(args.first || User.current, :view_issues) } }
         end
-      end 
+      end
 
     end
   end
@@ -50,7 +50,7 @@ module RedmineNewissuealerts
             NewissuealertsMailer.newissuealert(e, self, n).deliver
           end
         end
-      end 
+      end
       return ''
     end
 

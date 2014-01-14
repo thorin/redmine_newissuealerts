@@ -1,21 +1,5 @@
 <h2><%= t(:newissuealerts_new, :project => @project.name).html_safe %></h2>
-<%= form_for @newissuealert,
-	:as =>:newissuealert, 
-	:url => { :project_id => @project.identifier } do |f| %>
-  <%= error_messages_for 'newissuealert' %> 
-<div class="box tabular settings">
-  <p>
-    <%= f.label l(:email_addresses) %> <%= f.text_field :mail_addresses %>
-  </p>
-  <p>
-    <%= f.label l(:enabled) %> <%= f.check_box :enabled %>
-  </p>
-  <p>
-    <%= f.label l(:newissuealerts_set_priority) %> <%= f.check_box :priority %>
-  </p>
-
-  <p>
-    <%= f.submit l(:create) %>
-  </p>
-</div>
-<% end %> 
+<%= form_for @newissuealert, :url => newissuealerts_path(:project_id => @project) do |f| %>
+  <%= error_messages_for 'newissuealert' %>
+  <%= render :partial => 'newissuealerts/form', :locals => { :f => f} %>
+<% end %>
