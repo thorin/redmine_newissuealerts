@@ -13,8 +13,10 @@ module RedmineNewissuealerts
 
         # Add visible to Redmine
         unless respond_to?(:visible)
-          named_scope :visible, lambda {|*args| { :include => :project,
-                                                  :conditions => Project.allowed_to_condition(args.first || User.current, :view_issues) } }
+          named_scope :visible, lambda do |*args|
+            join(:project)
+            .where(Project.allowed_to_condition(args.first || User.current, :view_issues))
+          end
         end
       end
 
@@ -43,7 +45,7 @@ module RedmineNewissuealerts
         author = 'Anonymous'
       end
 
-      newissuealerts = Newissuealert.find(:all, :conditions => { :project_id => project.id } )
+      newissuealerts = Newissuealert.where(:project_id => project.id)
       newissuealerts.each do |n|
         if n.enabled and (n.tracker_id == -1 or n.tracker_id == tracker_id or n.tracker_id == nil)
           n.mail_addresses.split(",").each do |e|

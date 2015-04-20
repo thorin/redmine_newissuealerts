@@ -11,7 +11,7 @@ class NewissuealertsMailer < Mailer
     @issue = issue
     @issue_url = url_for(:controller => 'issues', :action => 'show', :id => issue)
     @newissuealert = newissuealert
-    #set_language_if_valid user.language
+    @users = [User.anonymous]
     headers 'X-Priority' => '1', 'Importance' => 'High', 'X-MSMail-Priority' => 'High' if newissuealert.priority
     subject = "[#{issue.project.name} - #{issue.tracker.name} ##{issue.id}] (#{issue.status.name}) #{issue.subject}"
     if newissuealert.subject?

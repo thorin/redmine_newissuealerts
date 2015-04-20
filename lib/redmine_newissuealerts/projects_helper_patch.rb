@@ -20,5 +20,5 @@ module RedmineNewissuealerts
         return tabs
       end
     end
-  end 
+  end
 end

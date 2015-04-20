@@ -8,6 +8,6 @@ module RedmineNewissuealerts
                               :partial => 'projects/settings/newissuealerts',
                               :label => :newissuealert_menuitem})
       end
-    end 
+    end
   end
 end
